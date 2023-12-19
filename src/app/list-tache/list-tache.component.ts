@@ -1,10 +1,13 @@
 import { Component, OnInit } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-list-tache',
   standalone: true,
-  imports: [],
+  imports: [
+    RouterLink
+  ],
   templateUrl: './list-tache.component.html',
   styleUrl: './list-tache.component.css'
 })

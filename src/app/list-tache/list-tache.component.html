@@ -1,6 +1,6 @@
 <div class="container mt-4 mb-4">
   <div class="allcards">
-    @for (tache of lestaches.reverse(); track $index) {
+    @for (tache of lestaches; track $index) {
 
     <div class="card">
       <h4>{{ tache.titre }}</h4>
@@ -14,7 +14,7 @@
         <button class="btn btn-danger w-100">Non Réalisé</button>
         }
         <div class="d-flex justify-content-between edit-delete-actions">
-          <button>
+          <button [routerLink]="['/edit',tache.id]" >
             <i class="bi bi-pencil-square"></i>
           </button>
           <button (click)="supression(tache.id)">

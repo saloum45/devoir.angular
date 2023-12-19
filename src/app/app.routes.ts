@@ -11,7 +11,7 @@ export const routes: Routes = [
     path:"add",component:AddTacheComponent
   },
   {
-    path:"edit",component:EditTacheComponent
+    path:"edit/:id",component:EditTacheComponent
   },
   {
     path:"list",component:ListTacheComponent
