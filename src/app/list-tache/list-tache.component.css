@@ -1,5 +1,5 @@
 .allcards {
-  padding-top: 50px;
+  /* padding-top: 50px; */
   display: flex;
   flex-wrap: wrap;
   gap: 20px;

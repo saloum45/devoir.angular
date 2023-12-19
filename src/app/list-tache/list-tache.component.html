@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container mt-4 mb-4">
   <div class="allcards">
     @for (tache of lestaches.reverse(); track $index) {
 
@@ -8,16 +8,16 @@
       <div class="actions">
         @if (tache.realise) {
 
-          <button class="btn btn-success w-100">Réalisé</button>
+        <button class="btn btn-success w-100">Réalisé</button>
         }@else {
 
-          <button class="btn btn-danger w-100">Non Réalisé</button>
+        <button class="btn btn-danger w-100">Non Réalisé</button>
         }
         <div class="d-flex justify-content-between edit-delete-actions">
           <button>
             <i class="bi bi-pencil-square"></i>
           </button>
-          <button (click)="supression()">
+          <button (click)="supression(tache.id)">
             <i class="bi bi-trash3-fill"></i>
           </button>
         </div>
