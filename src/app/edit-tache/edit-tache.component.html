@@ -1,5 +1,5 @@
 <div class="container mt-4">
-  <div class="alert alert-primary text-center">Ajout d'une tâche</div>
+  <div class="alert alert-primary text-center">Modification d'une tâche</div>
   <div class="w-75 m-auto">
     <div class="form-floating mb-3">
       <input type="text" class="form-control" id="floatingInput" [(ngModel)]="titre" />
@@ -11,8 +11,8 @@
     </div>
     <div class="form-floating">
       <select class="form-select" id="floatingSelectGrid" [(ngModel)]="realise">
-        <option selected value="false">Non Résolu</option>
-        <option value="true">Résolu</option>
+        <option value="false">Non Réalisé</option>
+        <option value="true">Réalisé</option>
       </select>
       <label for="floatingSelectGrid">L'etat</label>
     </div>
