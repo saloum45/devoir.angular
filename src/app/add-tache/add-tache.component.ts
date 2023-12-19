@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -18,17 +19,20 @@ export class AddTacheComponent {
   public realise = "";
 
   // Methodes
-  constructor(){
+  constructor(private route:Router) {
 
   }
   // la fonction qui ajoute une tâche
   enregister() {
     if (this.titre == "" || this.contenu == "") {
       this.sweetMessage("Désolé!!!", "Veuillez renseigner tous les champs", "error");
-    } {
+    } else {
       let tachesTmp = JSON.parse(localStorage.getItem("lestaches") ?? '[]');
-      tachesTmp.push({ titre: this.titre, contenu: this.contenu, realise: this.realise });
+      // incrementation de l'id pour la nouvelle tâche
+      let incremandedId=tachesTmp[tachesTmp.length-1].id+1;
+      tachesTmp.push({id:incremandedId, titre: this.titre, contenu: this.contenu, realise: this.realise });
       localStorage.setItem("lestaches", JSON.stringify(tachesTmp));
+      this.route.navigate(['list']);
       this.sweetMessage("Merci!!!", "Tâche ajoutée avec succès", "success");
     }
 

@@ -1,9 +1,9 @@
 <div class="container">
   <div class="allcards">
-    @for (tache of lestaches; track $index) {
+    @for (tache of lestaches.reverse(); track $index) {
 
     <div class="card">
-      <h4>{{ tache.title }}</h4>
+      <h4>{{ tache.titre }}</h4>
       <p>{{ tache.contenu }}</p>
       <div class="actions">
         @if (tache.realise) {

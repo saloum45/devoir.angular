@@ -13,27 +13,32 @@ export class ListTacheComponent implements OnInit {
   public lestaches:any[]=[];
   public lesTachesParDefaut = [
     {
-      title: "Concevoir un nouveau logo",
+      id:1,
+      titre: "Concevoir un nouveau logo",
       contenu: "Exploration de concepts créatifs pour le logo de la marque.",
       realise: false
     },
     {
-      title: "Optimiser la navigation mobile",
+      id:2,
+      titre: "Optimiser la navigation mobile",
       contenu: "Adaptation de l'interface pour une expérience mobile conviviale.",
       realise: true
     },
     {
-      title: "Créer une stratégie de marketing",
+      id:3,
+      titre: "Créer une stratégie de marketing",
       contenu: "Élaboration d'une stratégie complète pour accroître la visibilité en ligne.",
       realise: false
     },
     {
-      title: "Développer une fonction de recherche",
+      id:4,
+      titre: "Développer une fonction de recherche",
       contenu: "Intégration d'une fonction de recherche avancée pour améliorer l'expérience utilisateur.",
       realise: true
     },
     {
-      title: "Tester les scénarios d'utilisation",
+      id:5,
+      titre: "Tester les scénarios d'utilisation",
       contenu: "Exécution de scénarios de test pour identifier les points d'amélioration.",
       realise: true
     }
