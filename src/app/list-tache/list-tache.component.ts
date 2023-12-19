@@ -42,7 +42,9 @@ export class ListTacheComponent implements OnInit {
 
   // Methodes
   ngOnInit(): void {
-    localStorage.setItem("lestaches",JSON.stringify(this.lesTachesParDefaut));
+    if (localStorage.getItem("lestaches")==null || undefined) {
+      localStorage.setItem("lestaches",JSON.stringify(this.lesTachesParDefaut));
+    }
     this.lestaches=JSON.parse(localStorage.getItem("lestaches")??'[]');
 
   }
