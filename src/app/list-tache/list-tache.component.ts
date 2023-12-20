@@ -50,19 +50,12 @@ export class ListTacheComponent implements OnInit {
 
   // Methodes
   ngOnInit(): void {
-    // if (localStorage.getItem("lestaches")==null || undefined) {
-    //   localStorage.setItem("lestaches",JSON.stringify(this.lesTachesParDefaut));
-    // }
-    // this.lestaches=JSON.parse(localStorage.getItem("lestaches")??'[]');
-    this.initTaches();
-  }
-
-  initTaches() {
-    if (localStorage.getItem("lestaches") == null || undefined) {
+    if (localStorage.getItem("lestaches") == null || localStorage.getItem("lestaches") == undefined) {
       localStorage.setItem("lestaches", JSON.stringify(this.lesTachesParDefaut));
     }
     this.lestaches = JSON.parse(localStorage.getItem("lestaches") ?? '[]');
   }
+
   supression(id: any) {
     Swal.fire({
       title: "Etes-vous sûr?",

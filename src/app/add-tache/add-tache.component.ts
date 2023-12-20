@@ -16,7 +16,7 @@ export class AddTacheComponent {
   // Attributs
   public titre = "";
   public contenu = "";
-  public realise = "";
+  public realise = false;
 
   // Methodes
   constructor(private route:Router) {

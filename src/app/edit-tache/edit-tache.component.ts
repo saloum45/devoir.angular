@@ -42,7 +42,13 @@ export class EditTacheComponent implements OnInit {
         if (element.id == this.routeActivated.snapshot.params['id']) {
           element.titre = this.titre;
           element.contenu = this.contenu;
-          element.realise = this.realise;
+          if (this.realise=="true") {
+            element.realise=true;
+          }else if(this.realise=="false"){
+            element.realise=false;
+
+          }
+          // element.realise =Boolean(this.realise);
         }
       });
       localStorage.setItem("lestaches", JSON.stringify(tachesTmp));

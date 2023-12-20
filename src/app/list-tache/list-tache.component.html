@@ -7,14 +7,12 @@
       <p>{{ tache.contenu }}</p>
       <div class="actions">
         @if (tache.realise) {
-
         <button class="btn btn-success w-100">Réalisé</button>
         }@else {
-
         <button class="btn btn-danger w-100">Non Réalisé</button>
         }
         <div class="d-flex justify-content-between edit-delete-actions">
-          <button [routerLink]="['/edit',tache.id]" >
+          <button [routerLink]="['/edit', tache.id]">
             <i class="bi bi-pencil-square"></i>
           </button>
           <button (click)="supression(tache.id)">
