@@ -1,6 +1,21 @@
 <div class="container mt-4 mb-4">
+  <div class="" id="search-bloc">
+    <input
+      type="email"
+      class="form-control"
+      id="exampleFormControlInput1"
+      placeholder="Rechercher" [(ngModel)]="searchInput"
+      (input)="search()"
+    />
+    <select class="form-select" aria-label="Default select example" [(ngModel)]="filtreInput" (change)="filtre()">
+      <option selected value="tout">Tout</option>
+      <option value="true">Réalisé</option>
+      <option value="false">Non Réalisé</option>
+    </select>
+  </div>
+
   <div class="allcards">
-    @for (tache of lestaches; track $index) {
+    @for (tache of searchResult; track $index) {
 
     <div class="card">
       <h4>{{ tache.titre }}</h4>
@@ -23,4 +38,10 @@
     </div>
     }
   </div>
+  @if (searchResult.length==0) {
+    <div class="image-vide">
+      <img src="assets/vide.png" alt="">
+      <h6>Recherche sans résultat</h6>
+    </div>
+  }
 </div>

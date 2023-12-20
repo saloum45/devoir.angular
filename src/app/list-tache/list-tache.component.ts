@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import Swal from 'sweetalert2';
 
@@ -6,13 +7,17 @@ import Swal from 'sweetalert2';
   selector: 'app-list-tache',
   standalone: true,
   imports: [
-    RouterLink
+    RouterLink,
+    FormsModule
   ],
   templateUrl: './list-tache.component.html',
   styleUrl: './list-tache.component.css'
 })
 export class ListTacheComponent implements OnInit {
   // Attributs
+  public searchInput = "";
+  public filtreInput = "tout";
+  public searchResult: any[] = [];
   public lestaches: any[] = [];
   public lesTachesParDefaut = [
     {
@@ -54,6 +59,7 @@ export class ListTacheComponent implements OnInit {
       localStorage.setItem("lestaches", JSON.stringify(this.lesTachesParDefaut));
     }
     this.lestaches = JSON.parse(localStorage.getItem("lestaches") ?? '[]');
+    this.searchResult = JSON.parse(localStorage.getItem("lestaches") ?? '[]');
   }
 
   supression(id: any) {
@@ -80,6 +86,8 @@ export class ListTacheComponent implements OnInit {
         });
         localStorage.setItem("lestaches", JSON.stringify(tachesTmp));
         this.lestaches = JSON.parse(localStorage.getItem("lestaches") ?? '[]');
+        this.searchResult = JSON.parse(localStorage.getItem("lestaches") ?? '[]');
+        
 
         Swal.fire({
           title: "Supprimé!",
@@ -88,5 +96,38 @@ export class ListTacheComponent implements OnInit {
         });
       }
     });
+  }
+
+  search() {
+    this.searchResult = [];
+    this.lestaches.forEach((element: any) => {
+      if (element.titre.toLowerCase().includes(this.searchInput.toLowerCase())) {
+        this.searchResult.push(element);
+      }
+    });
+
+  }
+
+  // la fonction qui filtre par tâche réalisée ou non réalisée
+  filtre() {
+    this.searchResult = [];
+    let bool = true;
+    if (this.filtreInput == "true") {
+      bool = true;
+    } else if (this.filtreInput == "false") {
+      bool = false;
+    }else{
+      this.lestaches.forEach((element:any) => {
+        this.searchResult.push(element);
+      });
+      return;
+
+    }
+    this.lestaches.forEach((element: any) => {
+      if (element.realise == bool) {
+        this.searchResult.push(element);
+      }
+    });
+    // alert(this.filtreInput)
   }
 }

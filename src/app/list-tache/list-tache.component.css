@@ -37,3 +37,33 @@
 /* .edit-delete-actions button i {
   color: red;
 } */
+
+
+#search-bloc
+{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+#search-bloc input
+{
+width:40% ;
+}
+
+#search-bloc select
+{
+width:40% ;
+}
+
+
+/* rechercher vide  */
+
+.image-vide
+{
+  text-align: center;
+}
+.image-vide img
+{
+  width: 400px;
+  height: 400px;
+}
