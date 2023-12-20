@@ -27,10 +27,12 @@ export class AddTacheComponent {
     if (this.titre == "" || this.contenu == "") {
       this.sweetMessage("Désolé!!!", "Veuillez renseigner tous les champs", "error");
     } else {
+      // recuperation du contenu du local storage pour ajouter la nouvelle tâche, afin d'éviter l'écrasement des données
       let tachesTmp = JSON.parse(localStorage.getItem("lestaches") ?? '[]');
       // incrementation de l'id pour la nouvelle tâche
       let incremandedId=tachesTmp[tachesTmp.length-1].id+1;
       tachesTmp.push({id:incremandedId, titre: this.titre, contenu: this.contenu, realise: this.realise });
+      // mAj du local storage et redirection vers le component list pour l'affichage
       localStorage.setItem("lestaches", JSON.stringify(tachesTmp));
       this.route.navigate(['list']);
       this.sweetMessage("Merci!!!", "Tâche ajoutée avec succès", "success");

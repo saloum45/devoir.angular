@@ -23,6 +23,8 @@ export class EditTacheComponent implements OnInit {
 
   }
   ngOnInit(): void {
+    // recuperation du contenu du local storage pour afficher  la  tâche à modifier, dans le formulaire
+
     let tachesTmp = JSON.parse(localStorage.getItem("lestaches") ?? '[]');
     tachesTmp.forEach((element: any) => {
       if (element.id == this.routeActivated.snapshot.params['id']) {
@@ -37,20 +39,21 @@ export class EditTacheComponent implements OnInit {
     if (this.titre == "" || this.contenu == "") {
       this.sweetMessage("Désolé!!!", "Veuillez renseigner tous les champs", "error");
     } else {
+      // Confirmation de la modification et mAj du localstorage
       let tachesTmp = JSON.parse(localStorage.getItem("lestaches") ?? '[]');
       tachesTmp.forEach((element: any) => {
         if (element.id == this.routeActivated.snapshot.params['id']) {
           element.titre = this.titre;
           element.contenu = this.contenu;
-          if (this.realise=="true") {
-            element.realise=true;
-          }else if(this.realise=="false"){
-            element.realise=false;
+          if (this.realise == "true") {
+            element.realise = true;
+          } else if (this.realise == "false") {
+            element.realise = false;
 
           }
-          // element.realise =Boolean(this.realise);
         }
       });
+
       localStorage.setItem("lestaches", JSON.stringify(tachesTmp));
       this.route.navigate(['list']);
       this.sweetMessage("Merci!!!", "Modifications faite avec succès", "success");
